@@ -30,7 +30,7 @@ pipeline {
             steps {
                 withDockerRegistry(credentialsId: '5d633ea9-05d5-4038-bf63-a723025b95ff', url: 'https://docker.rcomanne.nl') {
                     sh '''
-                        Releasing artifact
+                        echo 'Releasing artifact'
                         mvn clean deploy --batch-mode -Dstyle.color=always
                     '''
                 }
