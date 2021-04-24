@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homepage-service
+  namespace: services
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: cr
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-strip-api-prefix@kubernetescrd
+spec:
+  ingressClassName: "traefik-external"
+  rules:
+    - host: api.rcomanne.nl
+      http:
+        paths:
+          - path: /homepage
+            pathType: Prefix
+            backend:
+              service:
+                name: homepage-service
+                port:
+                  name: web

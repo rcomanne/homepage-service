@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sb-app
+    username: sb-app
+    password: sb-app
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  level:
+    nl.rcomanne: DEBUG

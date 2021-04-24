@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage-service
+  namespace: services
+  labels:
+    app: homepage-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage-service
+  template:
+    metadata:
+      labels:
+        app: homepage-service
+    spec:
+      containers:
+        - name: homepage-service
+          image: docker.rcomanne.nl/homepage-service:latest
+          ports:
+            - name: web
+              containerPort: 8080
+            - name: actuator
+              containerPort: 8081
+          env:
+            - name: SPRING_MAIL_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.mail.username
+                  name: homepage-service
+            - name: SPRING_MAIL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.mail.password
+                  name: homepage-service
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.datasource.password
+                  name: homepage-service
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.datasource.username
+                  name: homepage-service
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.datasource.url
+                  name: homepage-service
+        - name: database
+          image: postgres:13-alpine
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.datasource.password
+                  name: homepage-service
+            - name: POSTGRESS_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: spring.mail.username
+                  name: homepage-service
+          ports:
+            - name: database
+              containerPort: 5432
+      imagePullSecrets:
+        - name: private-registry

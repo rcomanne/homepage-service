@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  database:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: sb-app
+      POSTGRES_PASSWORD: sb-app
+      POSTGRES_DB: sb-app
+    ports:
+      - 5432:5432
