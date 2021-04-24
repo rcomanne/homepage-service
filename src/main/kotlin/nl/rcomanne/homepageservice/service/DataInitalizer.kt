@@ -31,8 +31,8 @@ class DataInitalizer(
         val educations = ArrayList<Education>()
 
         educations.add(Education(
-                title = "Archeology Master (WO)",
-                school = "University of Amsterdam",
+                title = "ICT Bachelor (HBO)",
+                school = "Avans Hogeschool, Breda",
                 description = "Informatica bachelor of science, done in part time while working for Ordina and Rabobank.",
                 startDate = LocalDate.of(2016, 1, 1),
                 endDate = LocalDate.of(2020, 1, 1)
@@ -56,7 +56,7 @@ class DataInitalizer(
 
         educations.add(Education(
                 title = "VWO E & M",
-                school = "Goois Lyceum",
+                school = "Goois Lyceum, Bussum",
                 description = "VWO with an Economie and Maatschappij profile at Goois Lyceum in Bussum.",
                 startDate = LocalDate.of(2006, 1, 1),
                 endDate = LocalDate.of(2012, 1, 1)
