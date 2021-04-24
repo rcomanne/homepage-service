@@ -71,7 +71,7 @@ spec:
                 configMapKeyRef:
                   key: spring.datasource.password
                   name: homepage-service
-            - name: POSTGRES_USERNAME
+            - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
                   key: spring.mail.username
