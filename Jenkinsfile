@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh '''
                     echo 'Building ...'
-                    mvn clean install --batch-mode -Dstyle.color=always
+                    mvn clean install -DskipTests --batch-mode -Dstyle.color=always
                 '''
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 withDockerRegistry(credentialsId: '5d633ea9-05d5-4038-bf63-a723025b95ff', url: 'https://docker.rcomanne.nl') {
                     sh '''
                         echo 'Releasing artifact'
-                        mvn clean deploy --batch-mode -Dstyle.color=always
+                        mvn clean deploy -DskipTests --batch-mode -Dstyle.color=always
                     '''
                 }
             }
