@@ -18,12 +18,26 @@ spec:
       containers:
         - name: homepage-service
           image: docker.rcomanne.nl/homepage-service:latest
+          startupProbe:
+            httpGet:
+              port: actuator
+              path: /actuator/health
+          livenessProbe:
+            httpGet:
+              port: actuator
+              path: /actuator/health/liveness
+          readinessProbe:
+            httpGet:
+              port: actuator
+              path: /actuator/health/readiness
           ports:
             - name: web
               containerPort: 8080
             - name: actuator
               containerPort: 8081
           env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: k8s
             - name: SPRING_MAIL_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -57,7 +71,7 @@ spec:
                 configMapKeyRef:
                   key: spring.datasource.password
                   name: homepage-service
-            - name: POSTGRESS_USERNAME
+            - name: POSTGRES_USERNAME
               valueFrom:
                 configMapKeyRef:
                   key: spring.mail.username
