@@ -46,6 +46,12 @@ class DataInitalizer(
                 imageLink = "https://raw.githubusercontent.com/traefik/traefik/master/docs/content/assets/img/traefik.logo.png"
             ),
             Application(
+                name = "Personal Wiki",
+                description = "A personal git backed wiki page running with Gollum",
+                link = "https://wiki.rcomanne.nl",
+                imageLink = ""
+            ),
+            Application(
                 name = "Roller Game",
                 description = "A simple Unity WebGL browser game",
                 link = "https://roller.rcomanne.nl",
