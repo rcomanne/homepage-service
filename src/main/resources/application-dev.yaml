@@ -9,5 +9,4 @@ spring:
 
 logging:
   level:
-    ROOT: DEBUG
     nl.rcomanne: DEBUG
