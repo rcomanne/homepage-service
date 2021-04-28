@@ -6,15 +6,14 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.certresolver: cr
-#   TODO: figure out correct prefix strip for service
-#    traefik.ingress.kubernetes.io/router.middlewares: traefik-strip-api-prefix@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-strip-api-prefix@kubernetescrd
 spec:
   ingressClassName: "traefik-external"
   rules:
     - host: api.rcomanne.nl
       http:
         paths:
-          - path: /
+          - path: /homepage/
             pathType: Prefix
             backend:
               service:

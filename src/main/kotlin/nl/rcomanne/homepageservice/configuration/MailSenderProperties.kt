@@ -11,5 +11,5 @@ class MailSenderProperties(
         val username: String,
         val password: String,
         val auth: Boolean,
-        val starttlsEnable: Boolean
+        val starttlsEnable: Boolean,
 )

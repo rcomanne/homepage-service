@@ -10,6 +10,12 @@ spring:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
 
+server:
+  error:
+    include-message: always
+#    whitelabel:
+#      enabled: false
+
 mail-sender:
   host: ${spring.mail.host}
   port: ${spring.mail.port}
